@@ -16,6 +16,7 @@ The trivia challenges can all be solved with a simple google search:
 - syskronCTF{Triton}
 - syskronCTF{ID-PR-DE-RS-RC}
 - syskronCTF{ISO/IEC-7812}
+(some require the information to be edited a bit)
 ## Redacted News
 -We get an image with part of the text censored:
 ![image](/assets/redacted.png)
