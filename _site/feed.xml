@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.7">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2020-10-29T21:41:09-07:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">1pythonwriter</title><subtitle>1pythonwriter's ctf blog</subtitle><entry><title type="html">Syskron CTF 2020</title><link href="http://localhost:4000/ctf/writeups/2020/10/29/syskronctfwriteup.html" rel="alternate" type="text/html" title="Syskron CTF 2020" /><published>2020-10-29T00:00:00-07:00</published><updated>2020-10-29T00:00:00-07:00</updated><id>http://localhost:4000/ctf/writeups/2020/10/29/syskronctfwriteup</id><content type="html" xml:base="http://localhost:4000/ctf/writeups/2020/10/29/syskronctfwriteup.html">&lt;p&gt;Writeup Author: 1pythonwriter&lt;/p&gt;
+
+&lt;p&gt;While studying for a few tests over the weekend, I decided to attempt a few syskronCTF challenges. Although I didn’t solve to many, I believe I did a decent job in my limited time.&lt;/p&gt;
+
+&lt;h2 id=&quot;welcome-letter&quot;&gt;Welcome Letter&lt;/h2&gt;
+&lt;p&gt;This challenge was a simple sanity check. Simply open the pdf file given welcome-letter-1.pdf and find the flag in the letter
+##Vulnerable RTOS, Deadly Malware, Security Framework, and Check Digit (Trivia)
+The trivia challenges can all be solved with a simple google search:
+-syskronCTF{URGENT/11}
+-syskronCTF{Triton}
+-syskronCTF{ID-PR-DE-RS-RC}
+-syskronCTF{ISO/IEC-7812}
+##Redacted News
+-We get an image with part of the text censored:
+&lt;img src=&quot;/assets/redacted.png&quot; alt=&quot;image&quot; /&gt;
+In order to find the flag, it looks like we need to remove the alphalayer from the image. This can be done with a 
+simple python script:&lt;/p&gt;
+&lt;div class=&quot;language-python highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kn&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;nn&quot;&gt;PIL&lt;/span&gt; &lt;span class=&quot;kn&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Image&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'redacted.png'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;convert&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'RGB'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;save&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;'solved.png'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;we get:
+&lt;img src=&quot;/assets/solved.png&quot; alt=&quot;image&quot; /&gt;
+flag: syskronCTF{d0-Y0u-UNdEr5TaND-C2eCh?}&lt;/p&gt;
+&lt;h2 id=&quot;security-headers&quot;&gt;Security Headers&lt;/h2&gt;
+&lt;p&gt;This challenge tells us to check the HTTP response headers on www.senork.de.
+Simply use:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;curl -I https://www.senork.de
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;and we get the flag: syskronCTF{y0u-f0und-a-header-flag}&lt;/p&gt;
+&lt;h2 id=&quot;dos-attack&quot;&gt;Dos Attack&lt;/h2&gt;
+&lt;p&gt;Googling “Siemens Dos Attack Malware” or something similar will yield the name of the malware: Industroyer.
+flag: syskronCTF{Industroyer}&lt;/p&gt;
+&lt;h2 id=&quot;leak-audit&quot;&gt;Leak Audit&lt;/h2&gt;
+&lt;p&gt;For this challenge SQL came in handy. To find the flag, we needed to find how many employee records were in the file, any duplicate
+passwords, and how many records were protected with bcrypt.
+For this challenge, I first opened the .db file in &lt;a href=&quot;https://sqlitebrowser.org/&quot; title=&quot;sqlitebrowser&quot;&gt;DB Browser for SQLite&lt;/a&gt; and scrolled to the bottom, getting the answer to the first question:
+376
+Next, to find any duplicate passwords, we use the query:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;SELECT password, COUNT(password)
+FROM personal
+GROUP BY password
+HAVING COUNT(password) &amp;gt; 1
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;we get: mah6geiVoo
+Finally, in order to find the number of passwords protected with bcrypt, we can simply look at the recent passwords. Those that start with “$2b$10$” are encrypted with bcrypt. (21 passwords)
+Our flag is: syskronCTF{376_mah6geiVoo_21}&lt;/p&gt;
+
+&lt;h2 id=&quot;reflection&quot;&gt;Reflection&lt;/h2&gt;
+&lt;p&gt;syskronCTF 2020 was a great experience for me. Although I had limited time to spend working on challenges, I was able to improve my knowledge of sql, “Google-Fu”, and simply have a fun time. I will hopefully be able to spend a lot-more time on ctfs in the future, as I came extremely close to solving multiple other challenges (now that I learn from writeups), despite my limited time.&lt;/p&gt;</content><author><name></name></author><category term="ctf" /><category term="writeups" /><summary type="html">Writeup Author: 1pythonwriter While studying for a few tests over the weekend, I decided to attempt a few syskronCTF challenges. Although I didn’t solve to many, I believe I did a decent job in my limited time. Welcome Letter This challenge was a simple sanity check. Simply open the pdf file given welcome-letter-1.pdf and find the flag in the letter ##Vulnerable RTOS, Deadly Malware, Security Framework, and Check Digit (Trivia) The trivia challenges can all be solved with a simple google search: -syskronCTF{URGENT/11} -syskronCTF{Triton} -syskronCTF{ID-PR-DE-RS-RC} -syskronCTF{ISO/IEC-7812} ##Redacted News -We get an image with part of the text censored: In order to find the flag, it looks like we need to remove the alphalayer from the image. This can be done with a simple python script: from PIL import Image Image.open('redacted.png').convert('RGB').save('solved.png') we get: flag: syskronCTF{d0-Y0u-UNdEr5TaND-C2eCh?} Security Headers This challenge tells us to check the HTTP response headers on www.senork.de. Simply use: curl -I https://www.senork.de and we get the flag: syskronCTF{y0u-f0und-a-header-flag} Dos Attack Googling “Siemens Dos Attack Malware” or something similar will yield the name of the malware: Industroyer. flag: syskronCTF{Industroyer} Leak Audit For this challenge SQL came in handy. To find the flag, we needed to find how many employee records were in the file, any duplicate passwords, and how many records were protected with bcrypt. For this challenge, I first opened the .db file in DB Browser for SQLite and scrolled to the bottom, getting the answer to the first question: 376 Next, to find any duplicate passwords, we use the query: SELECT password, COUNT(password) FROM personal GROUP BY password HAVING COUNT(password) &amp;gt; 1 we get: mah6geiVoo Finally, in order to find the number of passwords protected with bcrypt, we can simply look at the recent passwords. Those that start with “$2b$10$” are encrypted with bcrypt. (21 passwords) Our flag is: syskronCTF{376_mah6geiVoo_21} Reflection syskronCTF 2020 was a great experience for me. Although I had limited time to spend working on challenges, I was able to improve my knowledge of sql, “Google-Fu”, and simply have a fun time. I will hopefully be able to spend a lot-more time on ctfs in the future, as I came extremely close to solving multiple other challenges (now that I learn from writeups), despite my limited time.</summary></entry><entry><title type="html">First Post</title><link href="http://localhost:4000/misc/posts/2020/10/27/helloworld.html" rel="alternate" type="text/html" title="First Post" /><published>2020-10-27T21:36:17-07:00</published><updated>2020-10-27T21:36:17-07:00</updated><id>http://localhost:4000/misc/posts/2020/10/27/helloworld</id><content type="html" xml:base="http://localhost:4000/misc/posts/2020/10/27/helloworld.html">&lt;p&gt;Nothing important, just wanted to make a “Hello World” for jekyll.&lt;/p&gt;
+
+&lt;p&gt;-1pythonwriter&lt;/p&gt;</content><author><name></name></author><category term="misc" /><category term="posts" /><summary type="html">Nothing important, just wanted to make a “Hello World” for jekyll.</summary></entry></feed>

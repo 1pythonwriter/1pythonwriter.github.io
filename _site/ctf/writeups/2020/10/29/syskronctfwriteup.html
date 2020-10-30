@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Syskron CTF 2020 | 1pythonwriter</title>
+<meta name="generator" content="Jekyll v3.8.7" />
+<meta property="og:title" content="Syskron CTF 2020" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Writeup Author: 1pythonwriter While studying for a few tests over the weekend, I decided to attempt a few syskronCTF challenges. Although I didn’t solve to many, I believe I did a decent job in my limited time. Welcome Letter This challenge was a simple sanity check. Simply open the pdf file given welcome-letter-1.pdf and find the flag in the letter ##Vulnerable RTOS, Deadly Malware, Security Framework, and Check Digit (Trivia) The trivia challenges can all be solved with a simple google search: -syskronCTF{URGENT/11} -syskronCTF{Triton} -syskronCTF{ID-PR-DE-RS-RC} -syskronCTF{ISO/IEC-7812} ##Redacted News -We get an image with part of the text censored: In order to find the flag, it looks like we need to remove the alphalayer from the image. This can be done with a simple python script: from PIL import Image Image.open(&#39;redacted.png&#39;).convert(&#39;RGB&#39;).save(&#39;solved.png&#39;) we get: flag: syskronCTF{d0-Y0u-UNdEr5TaND-C2eCh?} Security Headers This challenge tells us to check the HTTP response headers on www.senork.de. Simply use: curl -I https://www.senork.de and we get the flag: syskronCTF{y0u-f0und-a-header-flag} Dos Attack Googling “Siemens Dos Attack Malware” or something similar will yield the name of the malware: Industroyer. flag: syskronCTF{Industroyer} Leak Audit For this challenge SQL came in handy. To find the flag, we needed to find how many employee records were in the file, any duplicate passwords, and how many records were protected with bcrypt. For this challenge, I first opened the .db file in DB Browser for SQLite and scrolled to the bottom, getting the answer to the first question: 376 Next, to find any duplicate passwords, we use the query: SELECT password, COUNT(password) FROM personal GROUP BY password HAVING COUNT(password) &gt; 1 we get: mah6geiVoo Finally, in order to find the number of passwords protected with bcrypt, we can simply look at the recent passwords. Those that start with “$2b$10$” are encrypted with bcrypt. (21 passwords) Our flag is: syskronCTF{376_mah6geiVoo_21} Reflection syskronCTF 2020 was a great experience for me. Although I had limited time to spend working on challenges, I was able to improve my knowledge of sql, “Google-Fu”, and simply have a fun time. I will hopefully be able to spend a lot-more time on ctfs in the future, as I came extremely close to solving multiple other challenges (now that I learn from writeups), despite my limited time." />
+<meta property="og:description" content="Writeup Author: 1pythonwriter While studying for a few tests over the weekend, I decided to attempt a few syskronCTF challenges. Although I didn’t solve to many, I believe I did a decent job in my limited time. Welcome Letter This challenge was a simple sanity check. Simply open the pdf file given welcome-letter-1.pdf and find the flag in the letter ##Vulnerable RTOS, Deadly Malware, Security Framework, and Check Digit (Trivia) The trivia challenges can all be solved with a simple google search: -syskronCTF{URGENT/11} -syskronCTF{Triton} -syskronCTF{ID-PR-DE-RS-RC} -syskronCTF{ISO/IEC-7812} ##Redacted News -We get an image with part of the text censored: In order to find the flag, it looks like we need to remove the alphalayer from the image. This can be done with a simple python script: from PIL import Image Image.open(&#39;redacted.png&#39;).convert(&#39;RGB&#39;).save(&#39;solved.png&#39;) we get: flag: syskronCTF{d0-Y0u-UNdEr5TaND-C2eCh?} Security Headers This challenge tells us to check the HTTP response headers on www.senork.de. Simply use: curl -I https://www.senork.de and we get the flag: syskronCTF{y0u-f0und-a-header-flag} Dos Attack Googling “Siemens Dos Attack Malware” or something similar will yield the name of the malware: Industroyer. flag: syskronCTF{Industroyer} Leak Audit For this challenge SQL came in handy. To find the flag, we needed to find how many employee records were in the file, any duplicate passwords, and how many records were protected with bcrypt. For this challenge, I first opened the .db file in DB Browser for SQLite and scrolled to the bottom, getting the answer to the first question: 376 Next, to find any duplicate passwords, we use the query: SELECT password, COUNT(password) FROM personal GROUP BY password HAVING COUNT(password) &gt; 1 we get: mah6geiVoo Finally, in order to find the number of passwords protected with bcrypt, we can simply look at the recent passwords. Those that start with “$2b$10$” are encrypted with bcrypt. (21 passwords) Our flag is: syskronCTF{376_mah6geiVoo_21} Reflection syskronCTF 2020 was a great experience for me. Although I had limited time to spend working on challenges, I was able to improve my knowledge of sql, “Google-Fu”, and simply have a fun time. I will hopefully be able to spend a lot-more time on ctfs in the future, as I came extremely close to solving multiple other challenges (now that I learn from writeups), despite my limited time." />
+<link rel="canonical" href="http://localhost:4000/ctf/writeups/2020/10/29/syskronctfwriteup.html" />
+<meta property="og:url" content="http://localhost:4000/ctf/writeups/2020/10/29/syskronctfwriteup.html" />
+<meta property="og:site_name" content="1pythonwriter" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2020-10-29T00:00:00-07:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Syskron CTF 2020" />
+<script type="application/ld+json">
+{"@type":"BlogPosting","headline":"Syskron CTF 2020","dateModified":"2020-10-29T00:00:00-07:00","datePublished":"2020-10-29T00:00:00-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/ctf/writeups/2020/10/29/syskronctfwriteup.html"},"description":"Writeup Author: 1pythonwriter While studying for a few tests over the weekend, I decided to attempt a few syskronCTF challenges. Although I didn’t solve to many, I believe I did a decent job in my limited time. Welcome Letter This challenge was a simple sanity check. Simply open the pdf file given welcome-letter-1.pdf and find the flag in the letter ##Vulnerable RTOS, Deadly Malware, Security Framework, and Check Digit (Trivia) The trivia challenges can all be solved with a simple google search: -syskronCTF{URGENT/11} -syskronCTF{Triton} -syskronCTF{ID-PR-DE-RS-RC} -syskronCTF{ISO/IEC-7812} ##Redacted News -We get an image with part of the text censored: In order to find the flag, it looks like we need to remove the alphalayer from the image. This can be done with a simple python script: from PIL import Image Image.open(&#39;redacted.png&#39;).convert(&#39;RGB&#39;).save(&#39;solved.png&#39;) we get: flag: syskronCTF{d0-Y0u-UNdEr5TaND-C2eCh?} Security Headers This challenge tells us to check the HTTP response headers on www.senork.de. Simply use: curl -I https://www.senork.de and we get the flag: syskronCTF{y0u-f0und-a-header-flag} Dos Attack Googling “Siemens Dos Attack Malware” or something similar will yield the name of the malware: Industroyer. flag: syskronCTF{Industroyer} Leak Audit For this challenge SQL came in handy. To find the flag, we needed to find how many employee records were in the file, any duplicate passwords, and how many records were protected with bcrypt. For this challenge, I first opened the .db file in DB Browser for SQLite and scrolled to the bottom, getting the answer to the first question: 376 Next, to find any duplicate passwords, we use the query: SELECT password, COUNT(password) FROM personal GROUP BY password HAVING COUNT(password) &gt; 1 we get: mah6geiVoo Finally, in order to find the number of passwords protected with bcrypt, we can simply look at the recent passwords. Those that start with “$2b$10$” are encrypted with bcrypt. (21 passwords) Our flag is: syskronCTF{376_mah6geiVoo_21} Reflection syskronCTF 2020 was a great experience for me. Although I had limited time to spend working on challenges, I was able to improve my knowledge of sql, “Google-Fu”, and simply have a fun time. I will hopefully be able to spend a lot-more time on ctfs in the future, as I came extremely close to solving multiple other challenges (now that I learn from writeups), despite my limited time.","url":"http://localhost:4000/ctf/writeups/2020/10/29/syskronctfwriteup.html","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="/assets/main.css"><link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="1pythonwriter" /></head>
+<body><header class="site-header" role="banner">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">1pythonwriter</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/about/">About</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">Syskron CTF 2020</h1>
+    <p class="post-meta">
+      <time class="dt-published" datetime="2020-10-29T00:00:00-07:00" itemprop="datePublished">Oct 29, 2020
+      </time></p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+    <p>Writeup Author: 1pythonwriter</p>
+
+<p>While studying for a few tests over the weekend, I decided to attempt a few syskronCTF challenges. Although I didn’t solve to many, I believe I did a decent job in my limited time.</p>
+
+<h2 id="welcome-letter">Welcome Letter</h2>
+<p>This challenge was a simple sanity check. Simply open the pdf file given welcome-letter-1.pdf and find the flag in the letter
+##Vulnerable RTOS, Deadly Malware, Security Framework, and Check Digit (Trivia)
+The trivia challenges can all be solved with a simple google search:
+-syskronCTF{URGENT/11}
+-syskronCTF{Triton}
+-syskronCTF{ID-PR-DE-RS-RC}
+-syskronCTF{ISO/IEC-7812}
+##Redacted News
+-We get an image with part of the text censored:
+<img src="/assets/redacted.png" alt="image" />
+In order to find the flag, it looks like we need to remove the alphalayer from the image. This can be done with a 
+simple python script:</p>
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">PIL</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="n">Image</span><span class="p">.</span><span class="nb">open</span><span class="p">(</span><span class="s">'redacted.png'</span><span class="p">).</span><span class="n">convert</span><span class="p">(</span><span class="s">'RGB'</span><span class="p">).</span><span class="n">save</span><span class="p">(</span><span class="s">'solved.png'</span><span class="p">)</span>
+</code></pre></div></div>
+<p>we get:
+<img src="/assets/solved.png" alt="image" />
+flag: syskronCTF{d0-Y0u-UNdEr5TaND-C2eCh?}</p>
+<h2 id="security-headers">Security Headers</h2>
+<p>This challenge tells us to check the HTTP response headers on www.senork.de.
+Simply use:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>curl -I https://www.senork.de
+</code></pre></div></div>
+<p>and we get the flag: syskronCTF{y0u-f0und-a-header-flag}</p>
+<h2 id="dos-attack">Dos Attack</h2>
+<p>Googling “Siemens Dos Attack Malware” or something similar will yield the name of the malware: Industroyer.
+flag: syskronCTF{Industroyer}</p>
+<h2 id="leak-audit">Leak Audit</h2>
+<p>For this challenge SQL came in handy. To find the flag, we needed to find how many employee records were in the file, any duplicate
+passwords, and how many records were protected with bcrypt.
+For this challenge, I first opened the .db file in <a href="https://sqlitebrowser.org/" title="sqlitebrowser">DB Browser for SQLite</a> and scrolled to the bottom, getting the answer to the first question:
+376
+Next, to find any duplicate passwords, we use the query:</p>
+<div class="highlighter-rouge"><div class="highlight"><pre class="highlight"><code>SELECT password, COUNT(password)
+FROM personal
+GROUP BY password
+HAVING COUNT(password) &gt; 1
+</code></pre></div></div>
+<p>we get: mah6geiVoo
+Finally, in order to find the number of passwords protected with bcrypt, we can simply look at the recent passwords. Those that start with “$2b$10$” are encrypted with bcrypt. (21 passwords)
+Our flag is: syskronCTF{376_mah6geiVoo_21}</p>
+
+<h2 id="reflection">Reflection</h2>
+<p>syskronCTF 2020 was a great experience for me. Although I had limited time to spend working on challenges, I was able to improve my knowledge of sql, “Google-Fu”, and simply have a fun time. I will hopefully be able to spend a lot-more time on ctfs in the future, as I came extremely close to solving multiple other challenges (now that I learn from writeups), despite my limited time.</p>
+
+  </div><a class="u-url" href="/ctf/writeups/2020/10/29/syskronctfwriteup.html" hidden></a>
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">1pythonwriter</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">1pythonwriter</li><li><a class="u-email" href="mailto:1pythonwriter (at) gmail dot com">1pythonwriter (at) gmail dot com</a></li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"><li><a href="https://github.com/1pythonwriter"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#github"></use></svg> <span class="username">1pythonwriter</span></a></li><li><a href="https://www.twitter.com/n%2Fa"><svg class="svg-icon"><use xlink:href="/assets/minima-social-icons.svg#twitter"></use></svg> <span class="username">n/a</span></a></li></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>1pythonwriter&#39;s ctf blog</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+</body>
+
+</html>
