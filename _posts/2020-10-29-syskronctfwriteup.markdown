@@ -12,10 +12,10 @@ While studying for a few tests over the weekend, I decided to attempt a few sysk
 This challenge was a simple sanity check. Simply open the pdf file given welcome-letter-1.pdf and find the flag in the letter
 ##Vulnerable RTOS, Deadly Malware, Security Framework, and Check Digit (Trivia)
 The trivia challenges can all be solved with a simple google search:
--syskronCTF{URGENT/11}
--syskronCTF{Triton}
--syskronCTF{ID-PR-DE-RS-RC}
--syskronCTF{ISO/IEC-7812}
+- syskronCTF{URGENT/11}
+- syskronCTF{Triton}
+- syskronCTF{ID-PR-DE-RS-RC}
+- syskronCTF{ISO/IEC-7812}
 ##Redacted News
 -We get an image with part of the text censored:
 ![image](/assets/redacted.png)
