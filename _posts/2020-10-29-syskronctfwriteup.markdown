@@ -9,7 +9,7 @@ Writeup Author: 1pythonwriter
 While studying for a few tests over the weekend, I decided to attempt a few syskronCTF challenges. Although I didn't solve to many, I believe I did a decent job in my limited time.
 
 ## Welcome Letter
-This challenge was a simple sanity check. Simply open the pdf file given welcome-letter-1.pdf and find the flag in the letter
+This challenge was a simple sanity check. Simply open the pdf file "welcome-letter-1.pdf". The flag is in the text.
 ## Vulnerable RTOS, Deadly Malware, Security Framework, and Check Digit (Trivia)
 The trivia challenges can all be solved with a simple google search:
 -  syskronCTF{URGENT/11}
