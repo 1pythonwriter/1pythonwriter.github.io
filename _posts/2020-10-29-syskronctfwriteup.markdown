@@ -19,7 +19,7 @@ The trivia challenges can all be solved with a simple google search:
 ##Redacted News
 -We get an image with part of the text censored:
 ![image](/assets/redacted.png)
-In order to find the flag, it looks like we need to remove the alphalayer from the image. This can be done with a 
+In order to find the flag, it looks like we need to remove the alpha channel from the image. This can be done with a 
 simple python script:
 ```python
 from PIL import Image
