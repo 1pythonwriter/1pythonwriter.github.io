@@ -16,7 +16,7 @@ The trivia challenges can all be solved with a simple google search:
 - syskronCTF{Triton}
 - syskronCTF{ID-PR-DE-RS-RC}
 - syskronCTF{ISO/IEC-7812}
-##Redacted News
+## Redacted News
 -We get an image with part of the text censored:
 ![image](/assets/redacted.png)
 In order to find the flag, it looks like we need to remove the alpha channel from the image. This can be done with a 
