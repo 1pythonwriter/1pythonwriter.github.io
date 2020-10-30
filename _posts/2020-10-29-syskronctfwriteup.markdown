@@ -10,7 +10,7 @@ While studying for a few tests over the weekend, I decided to attempt a few sysk
 
 ## Welcome Letter
 This challenge was a simple sanity check. Simply open the pdf file given welcome-letter-1.pdf and find the flag in the letter
-##Vulnerable RTOS, Deadly Malware, Security Framework, and Check Digit (Trivia)
+## Vulnerable RTOS, Deadly Malware, Security Framework, and Check Digit (Trivia)
 The trivia challenges can all be solved with a simple google search:
 -  syskronCTF{URGENT/11}
 -  syskronCTF{Triton}
@@ -53,7 +53,9 @@ GROUP BY password
 HAVING COUNT(password) > 1
 ```
 we get: mah6geiVoo
+
 Finally, in order to find the number of passwords protected with bcrypt, we can simply look at the recent passwords. Those that start with "$2b$10$" are encrypted with bcrypt. (21 passwords)
+
 Our flag is: syskronCTF{376_mah6geiVoo_21}
 
 
