@@ -22,7 +22,7 @@ This was one of my favorite ctfs so far. The admins were kind, the challenges fu
 
 If we look at the text, we notice it is slightly different from the normal lorem ipsum. If we compare the given lorem ipsum with the original (you get can a snippet from sublime text), we find that the changed chars (when put together) result in:
 
-cyctf{latiniscool}.
+#### Flag: cyctf{latiniscool}.
 
 ## Forensics
 
@@ -34,7 +34,7 @@ Run strings on the image:
 
 ![imageviewerstep1](/assets/imageviewerstep1.png)
 
-flag: cyctf{h3h3h3_1m@g3_M3t@d@t@_v13w3r_ICU}
+#### flag: cyctf{h3h3h3_1m@g3_M3t@d@t@_v13w3r_ICU}
 
 # The row beneath
 
@@ -46,7 +46,7 @@ Same as the previous challenge, we find the flag if we run strings on the image.
 
 ![therowbeneathstep2](/assets/therowbeneathstep2.png)
 
-flag: cyctf{L00k_1n_th3_h3x_13h54d56}
+#### flag: cyctf{L00k_1n_th3_h3x_13h54d56}
 
 # What's the password?
 
@@ -56,7 +56,7 @@ using steghide we find that something is hidden in the image. We extract it to g
 
 ![whatsthepasswordflag](/assets/whatsthepasswordflag.png)
 
-flag: CYCTF{U$3_sud0_t0_achi3v3_y0ur_dr3@m$!}
+#### flag: CYCTF{U$3_sud0_t0_achi3v3_y0ur_dr3@m$!}
 
 # Flag Delivery
 
@@ -90,7 +90,7 @@ D ?M6D?M6 D?M6DD
 
 I was stumped for quite a long time but at 3am, my sleep deprived self noticed that the scientist's name backwards was "Morse Code". Changing the Ds to - and ?M6 to . gives us the flag.
 
-flag: CYCTF{R3@D_B3TW33N_TH3_L1N3S}
+#### flag: CYCTF{R3@D_B3TW33N_TH3_L1N3S}
 
 # Steg 2
 
@@ -100,7 +100,7 @@ With stegsolve we find the flag.
 
 ![steg2flag](/assets/steg2flag.png)
 
-flag: CYCTF{l$b_st3g@n0gr@phy_f0r_th3_w1n}
+#### flag: CYCTF{l$b_st3g@n0gr@phy_f0r_th3_w1n}
 
 ## Cryptography
 
@@ -110,7 +110,7 @@ flag: CYCTF{l$b_st3g@n0gr@phy_f0r_th3_w1n}
 
 Caesar cypher challenge. Use a website like https://www.dcode.fr/caesar-cipher to solve. With a rotation of +7 we get
 
-flag: CYCTF{c@3$@r_c!ph3r}
+#### flag: CYCTF{c@3$@r_c!ph3r}
 
 # Home Base
 
@@ -133,7 +133,7 @@ which is base64 (evident by the "==" at the end). We decrypt it and get:
 
 Which we then decrypt with base 85, getting the flag:
 
-CYCTF{it5_@_H0m3_2un!}
+#### Flag: CYCTF{it5_@_H0m3_2un!}
 
 # SUS
 
@@ -141,7 +141,7 @@ CYCTF{it5_@_H0m3_2un!}
 
 We get "ooflgqofllcedopwvtnhyacwllhehdl", using a vingenere cypher brute-forcer we get the flag.
 
-flag: cyctf{wouldyoulikesomevinegarwiththat}
+#### flag: cyctf{wouldyoulikesomevinegarwiththat}
 
 # Rak 1
 
@@ -151,7 +151,7 @@ Aes encryption.
 
 Looks like aes, using cyberchef (3 parts needed are the string broken up at the :) we get the flag.
 
-flag: CYCTF{wh0_kn3w_yU0_w3r3_sO_sm@r7}
+#### flag: CYCTF{wh0_kn3w_yU0_w3r3_sO_sm@r7}
 
 ## OSINT (Open-source intelligence)
 
@@ -165,7 +165,7 @@ Because the challenge talked about "points", I checked the scoreboard and found 
 
 ![osintflag](/assets/backtothefutureflag.JPG)
 
-flag: CYCTF{Tr@v3l_b@ck_1n_t1m3_t0_g3t_th3_fl@g}
+#### flag: CYCTF{Tr@v3l_b@ck_1n_t1m3_t0_g3t_th3_fl@g}
 
 ## Binary Exploitation
 # Overflow 1
@@ -191,7 +191,7 @@ We can see that it checks if the string has been overwritten to not equal "AAAA"
 
 ![overflow1solution](/assets/overflow1solve.png)
 
-flag: cyctf{st@ck_0v3rfl0ws_@r3_3z}
+#### flag: cyctf{st@ck_0v3rfl0ws_@r3_3z}
 # Overflow 2
 
 ![overflow2](/assets/overflow2.JPG)
@@ -232,7 +232,7 @@ We run it and..... success! We got a shell.
 ![overflow2exploit](/assets/overflow2exploit.png)
 
 Running bash -a first (so we can see what commands return), we then use "ls -a" to find files and discover flag.txt which we then cat out to get the flag.
-flag: CYCTF{0v3rfl0w!ng_v@ri@bl$_i$_3z}
+#### flag: CYCTF{0v3rfl0w!ng_v@ri@bl$_i$_3z}
 
 # FormatS
 
@@ -275,7 +275,7 @@ We run it and... we get the flag.
 
 ![formatStringexploit](/asset/formatstringexploit.png)
 
-flag: cyctf{3xpl0!t_th3_f0rm@t_str!ng}
+#### flag: cyctf{3xpl0!t_th3_f0rm@t_str!ng}
 ## Reverse Engineering
 # Password 1
 
@@ -394,7 +394,7 @@ for char in password:
 
 Which prints out the flag.
 
-flag: CYCTF{pu771ng_th3_ch@r@ct3r$_t0g3th3r_1337}
+#### flag: CYCTF{pu771ng_th3_ch@r@ct3r$_t0g3th3r_1337}
 
 # Password 2
 
@@ -443,7 +443,7 @@ for char in newPass:
     print(char, end='')
 ```
 
-flag: CYCTF{ju$t_@_l177l3_scr@mbl3_f0r_y0u_t0_d3c0d3}
+#### flag: CYCTF{ju$t_@_l177l3_scr@mbl3_f0r_y0u_t0_d3c0d3}
 
 ## Web Exploitation
 
@@ -455,7 +455,7 @@ obvious inspect element challenge. We find the flag as a comment in the source c
 
 ![inspectelement](/assets/inspectelement.PNG)
 
-flag: CYCTF{1nSp3t_eL3M3nt?}
+#### flag: CYCTF{1nSp3t_eL3M3nt?}
 
 # Disallow
 
@@ -471,7 +471,7 @@ Disallow: /n0r0b0tsh3r3/flag.html
 
 We navigate to "/n0r0b0tsh3r3/flag.html" and get the flag.
 
-flag: CYCTF{d33r0b0t$_r_sUp3r10r}
+#### flag: CYCTF{d33r0b0t$_r_sUp3r10r}
 
 # Data Store
 
@@ -483,7 +483,8 @@ We visit the site and are greeted with a simple login page:
 
 We try a simple SQL injection of: admin' OR 1=1 --. It works!
 
-We get the flag: CYCTF{1_l0v3_$q1i}
+We get the 
+#### flag: CYCTF{1_l0v3_$q1i}
 
 # Something Sw33t
 
@@ -505,7 +506,7 @@ Using cyberchef, we get the flag:
 
 ![cyberchefsw33tflag](/assets/somethingsw33tcyberchefflag.png)
 
-flag: CYCTF{0K_1_see_you_maybe_you_are_smart}
+#### flag: CYCTF{0K_1_see_you_maybe_you_are_smart}
 
 # Data Store 2
 
@@ -536,7 +537,7 @@ admin' OR 1=1 --
 
 in the password field will give us the flag.
 
-flag: CYCTF{s@n1t1ze_@11_U$3R_1npu7$}
+#### flag: CYCTF{s@n1t1ze_@11_U$3R_1npu7$}
 
 ## Password Cracking
 
@@ -554,7 +555,8 @@ Using fcrackzip (and rockyou.txt), we can easily bruteforce the password:
 
 Using the password "not2secure", we can open the flag.txt file.
 
-We get the flag: cyctf{y0u_cr@ck3d_th3_z1p}
+We get the 
+#### flag: cyctf{y0u_cr@ck3d_th3_z1p}
 
 # Supa Secure
 
@@ -566,7 +568,7 @@ It's a salted MD5 hash, with hashcat we can find the flag.
 
 ![supasecure2](/assets/supasecure2.png)
 
-flag: ilovesalt
+#### flag: ilovesalt
 
 # Me, Myself, and I
 
@@ -594,7 +596,7 @@ We then find files and directories with "ls -a" and finally cat the flag.
 
 ![shebang0solved](/assets/shebang0flag.png)
 
-flag: CYCTF{w3ll_1_gu3$$_b@sh_1s_e@zy}
+#### flag: CYCTF{w3ll_1_gu3$$_b@sh_1s_e@zy}
 
 # Shebang 1
 
@@ -618,7 +620,8 @@ We pipe cat flag.txt into grep for the string "CYCTF"
 cat flag.txt | grep "CYCTF"
 ```
 
-We get the flag: CYCTF{w3ll_1_gu3$$_y0u_kn0w_h0w_t0_gr3p}
+We get the 
+#### flag: CYCTF{w3ll_1_gu3$$_y0u_kn0w_h0w_t0_gr3p}
 
 # Shebang 2
 
@@ -628,7 +631,7 @@ We find a loooooot of directories, knowing we need to find the flag, we can simp
 
 ![shebang2flag](/assets/shebang2flag.png)
 
-flag: CYCTF{W0W_th@t$_@_l0t_0f_f1l3s}
+#### flag: CYCTF{W0W_th@t$_@_l0t_0f_f1l3s}
 
 # Shebang 3
 
@@ -638,7 +641,7 @@ We are greeted with 2 files, we probably have to compare them so lets use diff w
 
 ![shebang3flag](/assets/shebang3flag.png)
 
-flag: CYCTF{SPOT_TH3_D1FF}
+#### flag: CYCTF{SPOT_TH3_D1FF}
 
 # Shebang 4
 
@@ -647,7 +650,7 @@ flag: CYCTF{SPOT_TH3_D1FF}
 We find flag.png but we need to open it somehow. We can transfer the flag to our host machine to do so with scp.
 (for transparency, scp was, for whatever reason, not working on my machine, I talked with the (very kind) admins, and after proving my completion of the first 3 challenges (and the correct scp command), was given the flag.)
 
-flag: CYCTF{W3ll_1_gu3$$_th@t_w@s_actually_easy}
+#### flag: CYCTF{W3ll_1_gu3$$_th@t_w@s_actually_easy}
 
 ## Trivia Answers
 
