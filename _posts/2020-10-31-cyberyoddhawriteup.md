@@ -116,12 +116,16 @@ Caesar cypher challenge. Use a website like https://www.dcode.fr/caesar-cipher t
 
 All we get is the following:
 
-"4a5a57474934325a47464b54475632464f4259474336534a4f564647595653574a354345533454434b52585336564a524f425556435533554e4251574f504a35"
+"4a5a57474934325a47464b54475632464f4
+259474336534a4f564647595653574a35434
+5533454434b52585336564a524f425556435
+533554e4251574f504a35"
 
 There are 4 bases in baseball, so it seems like this is a multi-layer crypto challenge.
 Via trial and error (with cyberchef) we find the flag by first decrypting it from hex to get:
 
-"JZWGI42ZGFKTGV2FOBYGC6SJOVFGYVSWJ5CES4TCKRXS6VJROBUVCU3UNBQWOPJ5"
+"JZWGI42ZGFKTGV2FOBYGC6SJOVFGYVSWJ5
+CES4TCKRXS6VJROBUVCU3UNBQWOPJ5"
 
 We then decrypt this from base 32 and get:
 
