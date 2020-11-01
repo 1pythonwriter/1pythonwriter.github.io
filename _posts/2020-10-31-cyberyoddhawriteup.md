@@ -52,7 +52,7 @@ Same as the previous challenge, we find the flag if we run strings on the image.
 
 ![whatsthepassword](/assets/whatsthepassword.PNG)
 
-using steghide we find that something is hidden in the image. We extract it to get the text file with the flag.
+using steghide we find that something is hidden in the image. We extract it to get the text file with the flag. (password "sudo" - hint is in the image)
 
 ![whatsthepasswordflag](/assets/whatsthepasswordflag.png)
 
@@ -147,7 +147,7 @@ We get "ooflgqofllcedopwvtnhyacwllhehdl", using a vingenere cypher brute-forcer 
 
 ![rak1](/assets/rak1.PNG)
 
-Aes encryption.
+Aes encryption. (hint was that it is an "advanced" encryption, AES = Advanced Encryption Standard)
 
 Looks like aes, using cyberchef (3 parts needed are the string broken up at the :) we get the flag.
 
