@@ -674,5 +674,5 @@ We find flag.png but we need to open it somehow. We can transfer the flag to our
 
 As mentioned before, this was a great ctf in my opinion. It didn't run for too long, the challenges were fun, and the admins were nice. I greatly enjoyed the time I spent on this ctf.
 
-
+(All challenge description images were taken (via snipping tool) from cyberyoddha.baycyber.net)
 
