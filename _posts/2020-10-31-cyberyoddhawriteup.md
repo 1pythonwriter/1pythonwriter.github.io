@@ -277,7 +277,7 @@ r.interactive()
 
 We run it and... we get the flag.
 
-![formatStringexploit](/asset/formatstringexploit.png)
+![formatStringexploit](/assets/formatstringexploit.png)
 
 #### flag: cyctf{3xpl0!t_th3_f0rm@t_str!ng}
 ## Reverse Engineering
